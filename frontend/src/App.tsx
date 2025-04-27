@@ -1,6 +1,7 @@
 import './app.css';
 import Home from './pages/home/Page';
 import Game from './pages/game/Page';
+import WaitStart from './pages/waitStart';
 import CreateContest from './pages/createContest';
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import { useEthereum } from './contexts/EthereumContext';
@@ -24,7 +25,7 @@ function App() {
             <Route path="/" element={<Home account={account??''} connectWallet={connectWallet}/>} />
             <Route path="/game" element={<Game/>} />
             <Route path="/createContest" element={<CreateContest contract={contract??new MusicGameContract({} as ContractRunner)} />} />
-            {/* Add more routes as needed */}
+            <Route path="/waitStart/:contestId" element={<WaitStart account={account??''} contract={contract?? new MusicGameContract({} as ContractRunner)}/>} />
           </Routes>
       </main>
       {/* <footer>
