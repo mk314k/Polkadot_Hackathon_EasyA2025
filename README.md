@@ -66,7 +66,7 @@ _In this video, we show:_
 
 ## Explanation Video with Audio 🎥
 
-👉 [Watch our Demo Video](https://youtu.be/uBPdmIjG4yA)
+👉 [Watch our Demo Video](https://www.youtube.com/watch?v=yKHXc1XaPXo)
 
 _In this video, we show:_
 
@@ -98,7 +98,7 @@ _In this video, we show:_
 
 ## Presentation Slides (Required - Canva Link)
 
-👉 [Our Canva Presentation](https://your-canva-presentation-link-here.com)
+👉 [Our Canva Presentation](https://www.canva.com/design/DAGlzOT36Uw/yLNuv1i6oLdidDRanDLTyg/edit)
 
 Slides include:
 
