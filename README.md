@@ -12,16 +12,18 @@ Music creation and collaboration are often limited to professional tools and lac
 SoundSpy brings social creativity by letting multiple players cooperatively edit a music piece — while one secretly tries to sabotage it!  
 The challenge: Can you identify the spy before your song gets ruined?
 
-**How Polkadot Asset Hub helped:**  
-- We use Polkadot's smart contract functionality to manage contests, track players, and store contest lifecycle securely and trustlessly.  
+**How Polkadot Asset Hub helped:**
+
+- We use Polkadot's smart contract functionality to manage contests, track players, and store contest lifecycle securely and trustlessly.
 - Thanks to Polkadot Asset Hub, players can participate without centralized servers, and the final music edits can be minted as NFTs.
 
 ---
 
 ## Technical Description
 
-**Smart Contract:**  
-- Built using Solidity for EVM compatibility on Polkadot Asset Hub (through EVM-pallet).  
+**Smart Contract:**
+
+- Built using Solidity for EVM compatibility on Polkadot Asset Hub (through EVM-pallet).
 - Custom contract logic manages:
   - Contest creation
   - Player joins
@@ -29,7 +31,8 @@ The challenge: Can you identify the spy before your song gets ruined?
   - Round voting and scoring
   - Final winner selection
 
-**SDKs and Libraries Used:**  
+**SDKs and Libraries Used:**
+
 - `ethers.js` for smart contract interaction
 - `React` + `TypeScript` frontend
 - `Vite` build system
@@ -38,8 +41,9 @@ The challenge: Can you identify the spy before your song gets ruined?
 - `OfflineAudioContext` API for browser-based music editing
 - `React Router` for clean page navigation
 
-**Why Polkadot made this uniquely possible:**  
-- Polkadot Asset Hub’s EVM support allows running custom Solidity contracts seamlessly.  
+**Why Polkadot made this uniquely possible:**
+
+- Polkadot Asset Hub’s EVM support allows running custom Solidity contracts seamlessly.
 - Low transaction fees made it realistic to update game states frequently (e.g., player votes, round updates).
 - Polkadot's decentralized finality provides an honest, tamper-proof game outcome.
 
@@ -47,9 +51,10 @@ The challenge: Can you identify the spy before your song gets ruined?
 
 ## Demo Video 🎥
 
-👉 [Watch our Demo Video on Loom](https://your-loom-link-here.com)
+👉 [Watch our Demo Video](https://youtu.be/uBPdmIjG4yA)
 
-*In this video, we show:*
+_In this video, we show:_
+
 - Uploading music
 - Creating a contest
 - Joining and playing rounds
@@ -59,11 +64,22 @@ The challenge: Can you identify the spy before your song gets ruined?
 
 ---
 
+## Explanation Video with Audio 🎥
+
+👉 [Watch our Demo Video](https://youtu.be/uBPdmIjG4yA)
+
+_In this video, we show:_
+
+- Explain the project
+- Show the demo
+
+---
+
 ## Screenshots 🖼
 
-| Uploading Music | Waiting Room | Playing Game |
-|:---:|:---:|:---:|
-| ![Upload Music](./screenshots/upload.png) | ![Waiting Room](./screenshots/waiting-room.png) | ![Playing Game](./screenshots/playing.png) |
+|                Landing                |                Waiting Room                |                Playing Game                |                    Listening to the Music                    |              Hint               |                     Calculating Points                      |                  Final Music                  |              Your NFT              |
+| :-----------------------------------: | :----------------------------------------: | :----------------------------------------: | :----------------------------------------------------------: | :-----------------------------: | :---------------------------------------------------------: | :-------------------------------------------: | :--------------------------------: |
+| ![Landing](./screenshots/landing.png) | ![Waiting Room](./screenshots/waiting.png) | ![Playing Game](./screenshots/playing.png) | ![Listening to the Music](./screenshots/listen-to-music.png) | ![Hint](./screenshots/hint.png) | ![Calculating Points](./screenshots/calculating-points.png) | ![Final Music](./screenshots/final-music.png) | ![Your NFT](./screenshots/nft.png) |
 
 ---
 
@@ -87,6 +103,7 @@ The challenge: Can you identify the spy before your song gets ruined?
 👉 [Our Canva Presentation](https://your-canva-presentation-link-here.com)
 
 Slides include:
+
 - Problem Statement
 - Target Audience
 - How SoundSpy Works
@@ -98,22 +115,22 @@ Slides include:
 
 ## How this Repository is Structured
 
-| Folder | Description |
-|:---|:---|
-| `/contracts/` | Smart contracts (Solidity) |
-| `/frontend/src/contexts/` | Ethereum connection and Context|
-| `/frontend/src/libs/contracts` | smart contract hooks |
-| `/frontend/src/libs/audio_editor` | Custom AudioEditor.ts to manipulate audio browser-side  |
-| `/public/screenshots/` | Screenshots for presentation and README |
-| `/README.md` | This file |
+| Folder                            | Description                                            |
+| :-------------------------------- | :----------------------------------------------------- |
+| `/contracts/`                     | Smart contracts (Solidity)                             |
+| `/frontend/src/contexts/`         | Ethereum connection and Context                        |
+| `/frontend/src/libs/contracts`    | smart contract hooks                                   |
+| `/frontend/src/libs/audio_editor` | Custom AudioEditor.ts to manipulate audio browser-side |
+| `/public/screenshots/`            | Screenshots for presentation and README                |
+| `/README.md`                      | This file                                              |
 
 ---
 
 ## Team
 
-| Member | Role |
-|:---|:---|
-| You | Smart Contract Developer, Frontend Developer, Sound Editor |
+| Member | Role                                                       |
+| :----- | :--------------------------------------------------------- |
+| You    | Smart Contract Developer, Frontend Developer, Sound Editor |
 
 ---
 
@@ -124,4 +141,3 @@ Slides include:
 ---
 
 # Thank you for visiting SoundSpy! 🚀🎶
-
