@@ -129,7 +129,8 @@ Slides include:
 
 | Member | Role                                                       |
 | :----- | :--------------------------------------------------------- |
-| You    | Smart Contract Developer, Frontend Developer, Sound Editor |
+|  KM    | Smart Contract Developer, Frontend Developer               |
+|  
 
 ---
 
