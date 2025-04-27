@@ -1,0 +1,27 @@
+
+
+main {
+  width: 100%;
+  height: 100vh; 
+  background-image: url('../../assets/hero.png');
+  background-size: 82%;
+  background-repeat: no-repeat;
+  background-color: #141e2b;
+  background-position: bottom;
+  display: flex;
+ justify-content: flex-end;
+}
+
+
+.menu-bar{
+  display: flex;
+      flex-direction: column;
+      height: 100%;
+      justify-content: space-between;
+      align-items: end;
+      padding: 64px 32px 32px 32px;
+}
+
+
+
+
