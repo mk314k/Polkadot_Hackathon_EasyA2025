@@ -54,48 +54,50 @@ export default function CreateContest({ contract }: CreateContestProps) {
   };
 
   return (
-    <div className="flex flex-col items-center p-8 text-white create-contest">
-      <h1 className="text-3xl mb-8">Create New Contest 🎶</h1>
+    <div className="create-contest-container">
+      <div className="create-contest flex flex-col items-center p-8 text-white create-contest">
+        <h1 className="text-3xl mb-8">Create New Contest 🎶</h1>
 
-      {/* File Upload */}
-      <input
-        type="file"
-        accept="audio/*"
-        onChange={handleFileUpload}
-        className="mb-4"
-      />
-
-      {/* Preview Audio */}
-      {audioUrl && (
-        <audio controls src={audioUrl} className="mb-6 w-full max-w-lg" />
-      )}
-
-      {/* Rounds and Players */}
-      <div className="flex flex-col gap-4 mb-6">
+        {/* File Upload */}
         <input
-          type="number"
-          placeholder="Max Rounds"
-          value={maxRounds}
-          onChange={(e) => setMaxRounds(Number(e.target.value))}
-          className="p-2 rounded bg-gray-200 text-black"
+          type="file"
+          accept="audio/*"
+          onChange={handleFileUpload}
+          className="mb-4"
         />
-        <input
-          type="number"
-          placeholder="Max Players"
-          value={maxPlayers}
-          onChange={(e) => setMaxPlayers(Number(e.target.value))}
-          className="p-2 rounded bg-gray-200 text-black"
-        />
+
+        {/* Preview Audio */}
+        {audioUrl && (
+          <audio controls src={audioUrl} className="mb-6 w-full max-w-lg" />
+        )}
+
+        {/* Rounds and Players */}
+        <div className="flex flex-col gap-4 mb-6">
+          <input
+            type="number"
+            placeholder="Max Rounds"
+            value={maxRounds}
+            onChange={(e) => setMaxRounds(Number(e.target.value))}
+            className="p-2 rounded bg-gray-200 text-black"
+          />
+          <input
+            type="number"
+            placeholder="Max Players"
+            value={maxPlayers}
+            onChange={(e) => setMaxPlayers(Number(e.target.value))}
+            className="p-2 rounded bg-gray-200 text-black"
+          />
+        </div>
+
+        {/* Create Button */}
+        <button
+          onClick={handleCreateContest}
+          disabled={loading}
+          className="bg-green-500 hover:bg-green-600 px-6 py-3 rounded text-white"
+        >
+          {loading ? 'Creating...' : 'Create Contest'}
+        </button>
       </div>
-
-      {/* Create Button */}
-      <button
-        onClick={handleCreateContest}
-        disabled={loading}
-        className="bg-green-500 hover:bg-green-600 px-6 py-3 rounded text-white"
-      >
-        {loading ? 'Creating...' : 'Create Contest'}
-      </button>
     </div>
   );
 }

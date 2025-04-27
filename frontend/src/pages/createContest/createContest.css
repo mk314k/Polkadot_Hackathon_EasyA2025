@@ -1,10 +1,14 @@
 
 
-main {
-  width: 100%;
+.create-contest-container{
+  width: 100vw;
   height: 100vh; 
   background-image: url('../../assets/hero-2.png');
-  background-size: 32%;
+
+}
+
+.create-contest {
+  /* background-size: 32%; */
   background-repeat: no-repeat;
   background-color: #141e2b;
   background-position: bottom;
