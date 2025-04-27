@@ -1,4 +1,6 @@
 import AvatarList from '../../components/avatar-list/AvatartList';
+import Deck from '../../mock/deck.json';
+import PlayerView from '../../components/player-view/PlayerView';
 import Space from '../../components/space/Space';
 import data from '../../mock/players.json';
 
@@ -15,7 +17,8 @@ export const WaitingForPlayers: React.FC<WaitingForPlayersProps> = ({
         Waiting for players to join...
       </h1>
       <Space top={16} />
-      <AvatarList players={data.players} isLoading={isLoading} />
+      {/* <AvatarList players={data.players} isLoading={isLoading} /> */}
+      <PlayerView deck={Deck} />
     </div>
   );
 };
