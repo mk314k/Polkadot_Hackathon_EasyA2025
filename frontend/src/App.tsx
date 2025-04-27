@@ -1,7 +1,8 @@
 import './app.css';
 import Home from './pages/home/Page';
 import Game from './pages/game/Page';
-import WaitStart from './pages/waitStart';
+import WaitStart from './pages/waitStartMock';
+import GameView from './pages/gameView';
 import CreateContest from './pages/createContest';
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import { useEthereum } from './contexts/EthereumContext';
@@ -26,6 +27,7 @@ function App() {
             <Route path="/game" element={<Game/>} />
             <Route path="/createContest" element={<CreateContest contract={contract??new MusicGameContract({} as ContractRunner)} />} />
             <Route path="/waitStart/:contestId" element={<WaitStart account={account??''} contract={contract?? new MusicGameContract({} as ContractRunner)}/>} />
+            <Route path="/game/:contestId" element={<GameView contract={contract?? new MusicGameContract({} as ContractRunner)} account={account??''}/>} />
           </Routes>
       </main>
       {/* <footer>

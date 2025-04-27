@@ -43,9 +43,7 @@ export default function CreateContest({ contract }: CreateContestProps) {
       console.log("Contest created with ID:", contestId);
 
       // Navigate to WaitStart page with contestId and audioEditor in state
-      navigate(`/waitStart/${contestId}`, {
-        state: { audioEditor }
-      });
+      navigate(`/waitStart/${contestId}`);
     } catch (err) {
       console.error("Failed to create contest:", err);
     } finally {
