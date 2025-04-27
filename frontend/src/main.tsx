@@ -10,7 +10,7 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <EthereumProvider>
       <App />
+      <RouterProvider router={createBrowserRouter(ROUTE_CONFIG)} />
     </EthereumProvider>
-    <RouterProvider router={createBrowserRouter(ROUTE_CONFIG)} />
   </StrictMode>,
 );
