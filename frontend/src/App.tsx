@@ -1,18 +1,21 @@
+import ConnectWallet from './components/connect-wallet/ConnectWallet';
 import { useEthereum } from './contexts/EthereumContext';
+import './app.css';
 
 function App() {
   const { __provider, account, connectWallet } = useEthereum();
 
   return (
-    <div>
+    <main className="flex">
       {account ? (
         <>
-          <p>Connected account: {account}</p>
+          {/* <p>Connected account: {account}</p> */}
+          <ConnectWallet />
         </>
       ) : (
-        <button onClick={connectWallet}>Connect Wallet</button>
+        <ConnectWallet />
       )}
-    </div>
+    </main>
   );
 }
 
