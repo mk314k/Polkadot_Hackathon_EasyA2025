@@ -1,8 +1,19 @@
 
+import { useEthereum } from './contexts/EthereumContext';
 
 function App() {
+
+  const { __provider, account, connectWallet } = useEthereum();
+
   return (
-   <div className="text-3xl font-bold underline">All</div>
+    <div>  {account ? (
+      <>
+        <p>Connected account: {account}</p>
+      </>
+    ) : (
+      <button onClick={connectWallet}>Connect Wallet</button>
+    )}
+    </div>
   )
 }
 
