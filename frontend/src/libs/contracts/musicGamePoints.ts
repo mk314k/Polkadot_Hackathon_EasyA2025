@@ -10,7 +10,7 @@ export class MusicGameContract {
     "function playCard(uint8 contestId, uint8 playerIndex, uint8 cardIndex) public",
     "function vote(uint8 contestId, uint8 voterIndex, uint8 suspectIndex) public",
     "function contestCounter() view returns (uint8)",
-    "function contests(uint8 contestId) view returns (uint8 maxRounds, uint8 currentRound, bool started, bool submitted)"
+    "function contests(uint8 contestId) view returns (address creator, uint8 maxRounds, uint8 currentRound, bool started, bool submitted)"
   ];
 
   constructor(signer: ContractRunner) {
@@ -96,11 +96,17 @@ export class MusicGameContract {
   async getContestDetails(contestId: number) {
     const contest = await this.contract.contests(contestId);
     return {
+      creator: contest.creator,
       maxRounds: contest.maxRounds,
       currentRound: contest.currentRound,
       started: contest.started,
       submitted: contest.submitted
     };
+  }
+
+  async getContestCreator(contestId: number): Promise<string> {
+    const details = await this.getContestDetails(contestId);
+    return details.creator;
   }
 
   async isContestStarted(contestId: number): Promise<boolean> {
