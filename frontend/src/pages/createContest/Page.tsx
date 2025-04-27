@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AudioEditor } from '../libs/AudioEditor';
-import { MusicGameContract } from '../libs/contracts/musicGamePoints';
-
+import { AudioEditor } from '../../libs/AudioEditor';
+import { MusicGameContract } from '../../libs/contracts/musicGamePoints';
+import './createContest.css';
 interface CreateContestProps {
   contract: MusicGameContract;
 }
@@ -11,7 +11,7 @@ export default function CreateContest({ contract }: CreateContestProps) {
   const navigate = useNavigate();
 
   const [audioEditor, setAudioEditor] = useState<AudioEditor | null>(null);
-  const [audioUrl, setAudioUrl] = useState<string>("");
+  const [audioUrl, setAudioUrl] = useState<string>('');
   const [maxRounds, setMaxRounds] = useState<number>(5);
   const [maxPlayers, setMaxPlayers] = useState<number>(6);
   const [loading, setLoading] = useState(false);
@@ -26,28 +26,28 @@ export default function CreateContest({ contract }: CreateContestProps) {
       await editor.loadAudio(url);
       setAudioEditor(editor);
 
-      console.log("Audio loaded for contest:", file.name);
+      console.log('Audio loaded for contest:', file.name);
     }
   };
 
   const handleCreateContest = async () => {
     if (!contract) return;
     if (!audioEditor) {
-      alert("Please upload an audio first!");
+      alert('Please upload an audio first!');
       return;
     }
 
     try {
       setLoading(true);
       const contestId = await contract.createContest(maxRounds, maxPlayers);
-      console.log("Contest created with ID:", contestId);
+      console.log('Contest created with ID:', contestId);
 
       // Navigate to WaitStart page with contestId and audioEditor in state
       navigate(`/waitStart/${contestId}`, {
-        state: { audioEditor }
+        state: { audioEditor },
       });
     } catch (err) {
-      console.error("Failed to create contest:", err);
+      console.error('Failed to create contest:', err);
     } finally {
       setLoading(false);
     }
@@ -58,7 +58,12 @@ export default function CreateContest({ contract }: CreateContestProps) {
       <h1 className="text-3xl mb-8">Create New Contest 🎶</h1>
 
       {/* File Upload */}
-      <input type="file" accept="audio/*" onChange={handleFileUpload} className="mb-4" />
+      <input
+        type="file"
+        accept="audio/*"
+        onChange={handleFileUpload}
+        className="mb-4"
+      />
 
       {/* Preview Audio */}
       {audioUrl && (
@@ -89,7 +94,7 @@ export default function CreateContest({ contract }: CreateContestProps) {
         disabled={loading}
         className="bg-green-500 hover:bg-green-600 px-6 py-3 rounded text-white"
       >
-        {loading ? "Creating..." : "Create Contest"}
+        {loading ? 'Creating...' : 'Create Contest'}
       </button>
     </div>
   );

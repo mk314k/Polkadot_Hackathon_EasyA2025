@@ -1,0 +1,11 @@
+{
+    "role": "Spy",
+    "avatar": "https://api.dicebear.com/9.x/pixel-art/svg",
+    "name": "Kartikesh",
+    "points": "1000",
+    "actions": [
+      { "src": "https://github.com/mk314k/Polkadot_Hackathon_EasyA2025/blob/main/ChatGPT%20Image%20Apr%2026,%202025,%2008_48_23%20PM.png?raw=true" },
+      { "src": "https://raw.githubusercontent.com/mk314k/Polkadot_Hackathon_EasyA2025/refs/heads/main/ChatGPT%20Image%20Apr%2026%2C%202025%2C%2008_48_25%20PM.png" },
+      { "src": "https://raw.githubusercontent.com/mk314k/Polkadot_Hackathon_EasyA2025/refs/heads/main/ChatGPT%20Image%20Apr%2026%2C%202025%2C%2008_56_10%20PM.png" }
+    ]
+  }

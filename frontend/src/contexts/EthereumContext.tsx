@@ -1,4 +1,10 @@
-import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+  ReactNode,
+} from 'react';
 import { ethers } from 'ethers';
 import { ContractRunner } from 'ethers';
 import { MusicGameContract } from '../libs/contracts/musicGamePoints';
@@ -11,7 +17,9 @@ interface EthereumContextType {
   connectWallet: () => Promise<void>;
 }
 
-const EthereumContext = createContext<EthereumContextType | undefined>(undefined);
+const EthereumContext = createContext<EthereumContextType | undefined>(
+  undefined,
+);
 
 export const EthereumProvider = ({ children }: { children: ReactNode }) => {
   const [provider, setProvider] = useState<ethers.BrowserProvider | null>(null);
@@ -42,7 +50,9 @@ export const EthereumProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   return (
-    <EthereumContext.Provider value={{ provider, signer, account, contract, connectWallet }}>
+    <EthereumContext.Provider
+      value={{ provider, signer, account, contract, connectWallet }}
+    >
       {children}
     </EthereumContext.Provider>
   );

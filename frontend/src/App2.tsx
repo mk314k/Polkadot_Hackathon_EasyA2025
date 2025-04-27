@@ -8,7 +8,7 @@ function App() {
   const { account, connectWallet, contract } = useEthereum();
 
   const [audioEditor, setAudioEditor] = useState<AudioEditor | null>(null);
-  const [audioUrl, setAudioUrl] = useState<string>("");
+  const [audioUrl, setAudioUrl] = useState<string>('');
   const [startTime, setStartTime] = useState<number>(0);
   const [endTime, setEndTime] = useState<number>(5);
   const audioRef = useRef<HTMLAudioElement>(null);
@@ -23,47 +23,54 @@ function App() {
       await editor.loadAudio(url);
       setAudioEditor(editor);
 
-      console.log("Audio loaded:", file.name);
+      console.log('Audio loaded:', file.name);
     }
   };
 
-  const applyEffect = async (effectType: "scream" | "pitch" | "echo" | "noise") => {
+  const applyEffect = async (
+    effectType: 'scream' | 'pitch' | 'echo' | 'noise',
+  ) => {
     if (!audioEditor) return;
-  
+
     if (audioRef.current) {
       audioRef.current.pause();
     }
-  
+
     try {
       let editedBlob: Blob | null = null;
-  
+
       switch (effectType) {
-        case "scream":
+        case 'scream':
           editedBlob = await audioEditor.addScreamEffect(startTime, endTime);
           break;
-        case "pitch":
-          editedBlob = await audioEditor.changePitchSegment(startTime, endTime, 2.0); // pitch up 2x
+        case 'pitch':
+          editedBlob = await audioEditor.changePitchSegment(
+            startTime,
+            endTime,
+            2.0,
+          ); // pitch up 2x
           break;
-        case "echo":
+        case 'echo':
           editedBlob = await audioEditor.addEchoEffect(startTime, endTime);
           break;
-        case "noise":
+        case 'noise':
           editedBlob = await audioEditor.addNoise(startTime, endTime);
           break;
       }
-  
+
       if (editedBlob) {
         const editedUrl = URL.createObjectURL(editedBlob);
         setAudioUrl(editedUrl);
       }
     } catch (err) {
-      console.error("Failed to apply effect:", err);
+      console.error('Failed to apply effect:', err);
     }
   };
-  
 
   return (
-    <main className={`flex flex-col min-h-screen p-8 ${account && 'bg-[#212121]'}`}>
+    <main
+      className={`flex flex-col min-h-screen p-8 ${account && 'bg-[#212121]'}`}
+    >
       {!account ? (
         <ConnectWallet onClick={connectWallet} />
       ) : (
@@ -74,12 +81,22 @@ function App() {
           <div className="flex flex-col items-center gap-6">
             <h1 className="text-white text-2xl">SoundSpy 🎶 Audio Editor</h1>
 
-            <input type="file" accept="audio/*" onChange={handleFileUpload} className="mb-4" />
+            <input
+              type="file"
+              accept="audio/*"
+              onChange={handleFileUpload}
+              className="mb-4"
+            />
 
             {/* Audio Player */}
             {audioUrl && (
               <>
-                <audio ref={audioRef} controls src={audioUrl} style={{ width: '100%' }} />
+                <audio
+                  ref={audioRef}
+                  controls
+                  src={audioUrl}
+                  style={{ width: '100%' }}
+                />
 
                 {/* Time Range Inputs */}
                 <div className="flex gap-4 mt-4">
@@ -101,16 +118,28 @@ function App() {
 
                 {/* Effect Buttons */}
                 <div className="flex flex-wrap gap-4 mt-6">
-                  <button onClick={() => applyEffect('scream')} className="bg-red-500 hover:bg-red-600 px-4 py-2 rounded text-white">
+                  <button
+                    onClick={() => applyEffect('scream')}
+                    className="bg-red-500 hover:bg-red-600 px-4 py-2 rounded text-white"
+                  >
                     Strong Scream
                   </button>
-                  <button onClick={() => applyEffect('pitch')} className="bg-purple-500 hover:bg-purple-600 px-4 py-2 rounded text-white">
+                  <button
+                    onClick={() => applyEffect('pitch')}
+                    className="bg-purple-500 hover:bg-purple-600 px-4 py-2 rounded text-white"
+                  >
                     Pitch Up
                   </button>
-                  <button onClick={() => applyEffect('echo')} className="bg-yellow-500 hover:bg-yellow-600 px-4 py-2 rounded text-black">
+                  <button
+                    onClick={() => applyEffect('echo')}
+                    className="bg-yellow-500 hover:bg-yellow-600 px-4 py-2 rounded text-black"
+                  >
                     Echo
                   </button>
-                  <button onClick={() => applyEffect('noise')} className="bg-green-500 hover:bg-green-600 px-4 py-2 rounded text-white">
+                  <button
+                    onClick={() => applyEffect('noise')}
+                    className="bg-green-500 hover:bg-green-600 px-4 py-2 rounded text-white"
+                  >
                     Add Noise
                   </button>
                 </div>
