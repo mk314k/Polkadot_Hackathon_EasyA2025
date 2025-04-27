@@ -1,11 +1,8 @@
 
 
-
 function App() {
-
-
   return (
-   <div className="text-3xl font-bold underline">Our Game</div>
+   <div className="text-3xl font-bold underline">All</div>
   )
 }
 
