@@ -77,11 +77,9 @@ _In this video, we show:_
 
 ## Screenshots 🖼
 
-|                Landing                |                Waiting Room                |                Playing Game                |                    Listening to the Music                    |              Hint               |                     Calculating Points                      |                  Final Music                  |              Your NFT              |
-| :-----------------------------------: | :----------------------------------------: | :----------------------------------------: | :----------------------------------------------------------: | :-----------------------------: | :---------------------------------------------------------: | :-------------------------------------------: | :--------------------------------: |
-| ![Landing](./screenshots/landing.png) | ![Waiting Room](./screenshots/waiting.png) | ![Playing Game](./screenshots/playing.png) | ![Listening to the Music](./screenshots/listen-to-music.png) | ![Hint](./screenshots/hint.png) | ![Calculating Points](./screenshots/calculating-points.png) | ![Final Music](./screenshots/final-music.png) | ![Your NFT](./screenshots/nft.png) |
-
----
+|                      Landing                       |                    Waiting Room                    |                    Playing Game                    |                   Listening to the Music                   |                      Hint                       |                      Calculating Points                       |                      Final Music                       |                    Your NFT                    |
+| :------------------------------------------------: | :------------------------------------------------: | :------------------------------------------------: | :--------------------------------------------------------: | :---------------------------------------------: | :-----------------------------------------------------------: | :----------------------------------------------------: | :--------------------------------------------: |
+| <img src="./screenshots/landing.png" width="200"/> | <img src="./screenshots/waiting.png" width="200"/> | <img src="./screenshots/playing.png" width="200"/> | <img src="./screenshots/listen-to-music.png" width="200"/> | <img src="./screenshots/hint.png" width="200"/> | <img src="./screenshots/calculating-points.png" width="200"/> | <img src="./screenshots/final-music.png" width="200"/> | <img src="./screenshots/nft.png" width="200"/> |
 
 ## Smart Contract
 
