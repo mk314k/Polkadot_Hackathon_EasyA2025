@@ -10,31 +10,42 @@ export class MusicGameContract {
     "function playCard(uint8 contestId, uint8 playerIndex, uint8 cardIndex) public",
     "function vote(uint8 contestId, uint8 voterIndex, uint8 suspectIndex) public",
     "function contestCounter() view returns (uint8)",
-    "function contests(uint8 contestId) view returns (address creator, uint8 maxRounds, uint8 currentRound, bool started, bool submitted)"
+    "function contests(uint8 contestId) view returns (address creator, uint8 maxRounds, uint8 currentRound, bool started, bool submitted)",
+    "event ContestCreated(uint8 indexed contestId)",
+    "event PlayerJoined(uint8 indexed contestId, address indexed player)",
+    "event ContestStarted(uint8 indexed contestId)",
+    "event RoundSubmitted(uint8 indexed contestId, address indexed player)",
+    "event RoundVoted(uint8 indexed contestId, address indexed voter)",
+    "event RoundEnded(uint8 indexed contestId, uint8 round)",
+    "event ContestEnded(uint8 indexed contestId, address winner)"
   ];
 
   constructor(signer: ContractRunner) {
     this.contract = new ethers.Contract(this.contractAddress, this.abi, signer);
   }
 
-  private parseEvent(logs: ethers.Log[], eventName: string) {
-    for (const log of logs) {
+  private parseEvent(receipt: ethers.TransactionReceipt, eventName: string) {
+    for (const log of receipt) {
+      if (log.address.toLowerCase() !== this.contractAddress.toLowerCase()) {
+        continue; // Ignore logs not from our contract
+      }
       try {
         const parsed = this.contract.interface.parseLog(log);
         if (parsed?.name === eventName) {
           return parsed.args;
         }
       } catch (err) {
-        continue; // not parsable, skip
+        continue; // skip non-matching logs
       }
     }
     return null;
   }
+  
 
   async createContest(maxRounds: number, maxPlayers: number) {
     const tx = await this.contract.createContest(maxRounds);
     const receipt = await tx.wait();
-    const args = this.parseEvent(receipt.logs, "ContestCreated");
+    const args = this.parseEvent(receipt, "ContestCreated");
     if (args) {
       console.log("Contest Created with ID:", args.contestId.toString());
       return args.contestId;
@@ -45,7 +56,7 @@ export class MusicGameContract {
   async joinContest(contestId: number) {
     const tx = await this.contract.joinContest(contestId);
     const receipt = await tx.wait();
-    const args = this.parseEvent(receipt.logs, "PlayerJoined");
+    const args = this.parseEvent(receipt, "PlayerJoined");
     if (args) {
       console.log(`Player ${args.player} joined contest ${args.contestId}`);
       return args;
@@ -56,7 +67,7 @@ export class MusicGameContract {
   async startContest(contestId: number) {
     const tx = await this.contract.startContest(contestId);
     const receipt = await tx.wait();
-    const args = this.parseEvent(receipt.logs, "ContestStarted");
+    const args = this.parseEvent(receipt, "ContestStarted");
     if (args) {
       console.log(`Contest ${args.contestId} started!`);
       return args;
@@ -67,7 +78,7 @@ export class MusicGameContract {
   async playCard(contestId: number, playerIndex: number, cardIndex: number) {
     const tx = await this.contract.playCard(contestId, playerIndex, cardIndex);
     const receipt = await tx.wait();
-    const args = this.parseEvent(receipt.logs, "RoundSubmitted");
+    const args = this.parseEvent(receipt, "RoundSubmitted");
     if (args) {
       console.log(`Round submission by ${args.player} in contest ${args.contestId}`);
       return args;
@@ -78,7 +89,7 @@ export class MusicGameContract {
   async vote(contestId: number, voterIndex: number, suspectIndex: number) {
     const tx = await this.contract.vote(contestId, voterIndex, suspectIndex);
     const receipt = await tx.wait();
-    const args = this.parseEvent(receipt.logs, "RoundVoted");
+    const args = this.parseEvent(receipt, "RoundVoted");
     if (args) {
       console.log(`Vote by ${args.voter} in contest ${args.contestId}`);
       return args;
