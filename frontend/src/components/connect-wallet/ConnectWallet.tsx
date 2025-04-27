@@ -1,9 +1,13 @@
 import React from 'react';
 import './connectWallet.css';
 
-const ConnectWallet: React.FC = () => {
+interface ConnectWallet {
+  onClick: () => void;
+}
+
+const ConnectWallet: React.FC<ConnectWallet> = ({ onClick }) => {
   return (
-    <div className="card wallet">
+    <div onClick={onClick} className="card wallet">
       <div className="overlay"></div>
       <div className="circle">
         <svg
