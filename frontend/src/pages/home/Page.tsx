@@ -1,15 +1,15 @@
-import ConnectWallet from '../../components/connect-wallet/ConnectWallet';
-import { useEthereum } from '../../contexts/EthereumContext';
+// import ConnectWallet from '../../components/connect-wallet/ConnectWallet';
 
 import './home.css';
 import { Link } from 'react-router';
 
 interface HomeProps {
   children?: React.ReactNode;
+  account?: string;
+  connectWallet?: () => void;
 }
 
-export const Home: React.FC<HomeProps> = ({ children }) => {
-  const { account, connectWallet } = useEthereum();
+export const Home: React.FC<HomeProps> = ({ children, account, connectWallet }) => {
   return (
     <main>
       <aside className="menu-bar">
@@ -17,7 +17,7 @@ export const Home: React.FC<HomeProps> = ({ children }) => {
           <ul>
             {account ? (
               <>
-                <Link to="/game">
+                <Link to="/createContest">
                   <li className="flex items-center justify-center text-white text-[29px] w-[185px] h-[60px] rounded-[8px] border-[2px] cursor-pointer mt-[24px] hover:bg-neutral-600 transition">
                     New Game
                   </li>
@@ -41,13 +41,6 @@ export const Home: React.FC<HomeProps> = ({ children }) => {
               </li>
             )}
           </ul>
-        </div>
-        <div className="w-[220px]  flex items-center justify-center">
-          {account && (
-            <p className="font-inter font-bold text-[12px] leading-none tracking-[-0.03em] text-center text-white">
-              Wallet ID: 0xB5ce6ee9E5e9d3bE7370378F789905D12CB340D1
-            </p>
-          )}
         </div>
       </aside>
       {children}

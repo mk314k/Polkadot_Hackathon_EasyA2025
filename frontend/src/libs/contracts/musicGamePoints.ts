@@ -31,7 +31,7 @@ export class MusicGameContract {
     return null;
   }
 
-  async createContest(maxRounds: number) {
+  async createContest(maxRounds: number, maxPlayers: number) {
     const tx = await this.contract.createContest(maxRounds);
     const receipt = await tx.wait();
     const args = this.parseEvent(receipt.logs, "ContestCreated");

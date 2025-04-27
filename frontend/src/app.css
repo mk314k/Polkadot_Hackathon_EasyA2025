@@ -6,4 +6,20 @@ main {
   height: 100vh; 
 }
 
+.account-info{
+  font-size: medium;
+  color: rgb(218, 218, 229);
+  border: red 2px solid;
+  padding: 5px;
+  border-radius: 5%;
+  position: fixed;
+  top: 1vh;
+  right: 2vw;
+}
+
+.create-contest{
+  position: fixed;
+  top: 3vh;
+  right: 2vw;
+}
 
