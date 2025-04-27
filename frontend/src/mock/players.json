@@ -1,0 +1,25 @@
+{
+    "players": [
+      {
+        "name": "Kartikesh",
+        "avatar": "https://api.dicebear.com/9.x/pixel-art/svg",
+        "points": 1000
+      },
+      {
+        "name": "Molly",
+        "avatar": "https://api.dicebear.com/9.x/pixel-art/svg?seed=Jane",
+        "points": 1000
+      },
+      {
+        "name": "Robson",
+        "avatar": "https://api.dicebear.com/9.x/pixel-art/svg?seed=John&hair=short01,short02,short03,short04,short05",
+        "points": 1000
+      },
+      {
+        "name": "Charlotte",
+        "avatar": "https://api.dicebear.com/9.x/bottts/png",
+        "points": 1000
+      }
+    ]
+  }
+  

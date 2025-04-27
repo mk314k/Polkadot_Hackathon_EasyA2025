@@ -2,15 +2,15 @@ import { ContractRunner, ethers } from 'ethers';
 
 export class MusicGameContract {
   public contract: ethers.Contract;
-  public contractAddress: string = "0x5DF2994dba199fd1b65555eb7A0c64Dec5175596";
+  public contractAddress: string = '0x5DF2994dba199fd1b65555eb7A0c64Dec5175596';
   public abi = [
-    "function createContest(uint8 maxRounds) public",
-    "function joinContest(uint8 contestId) public",
-    "function startContest(uint8 contestId) public",
-    "function playCard(uint8 contestId, uint8 playerIndex, uint8 cardIndex) public",
-    "function vote(uint8 contestId, uint8 voterIndex, uint8 suspectIndex) public",
-    "function contestCounter() view returns (uint8)",
-    "function contests(uint8 contestId) view returns (uint8 maxRounds, uint8 currentRound, bool started, bool submitted)"
+    'function createContest(uint8 maxRounds) public',
+    'function joinContest(uint8 contestId) public',
+    'function startContest(uint8 contestId) public',
+    'function playCard(uint8 contestId, uint8 playerIndex, uint8 cardIndex) public',
+    'function vote(uint8 contestId, uint8 voterIndex, uint8 suspectIndex) public',
+    'function contestCounter() view returns (uint8)',
+    'function contests(uint8 contestId) view returns (uint8 maxRounds, uint8 currentRound, bool started, bool submitted)',
   ];
 
   constructor(signer: ContractRunner) {
@@ -34,56 +34,58 @@ export class MusicGameContract {
   async createContest(maxRounds: number) {
     const tx = await this.contract.createContest(maxRounds);
     const receipt = await tx.wait();
-    const args = this.parseEvent(receipt.logs, "ContestCreated");
+    const args = this.parseEvent(receipt.logs, 'ContestCreated');
     if (args) {
-      console.log("Contest Created with ID:", args.contestId.toString());
+      console.log('Contest Created with ID:', args.contestId.toString());
       return args.contestId;
     }
-    throw new Error("ContestCreated event not found.");
+    throw new Error('ContestCreated event not found.');
   }
 
   async joinContest(contestId: number) {
     const tx = await this.contract.joinContest(contestId);
     const receipt = await tx.wait();
-    const args = this.parseEvent(receipt.logs, "PlayerJoined");
+    const args = this.parseEvent(receipt.logs, 'PlayerJoined');
     if (args) {
       console.log(`Player ${args.player} joined contest ${args.contestId}`);
       return args;
     }
-    throw new Error("PlayerJoined event not found.");
+    throw new Error('PlayerJoined event not found.');
   }
 
   async startContest(contestId: number) {
     const tx = await this.contract.startContest(contestId);
     const receipt = await tx.wait();
-    const args = this.parseEvent(receipt.logs, "ContestStarted");
+    const args = this.parseEvent(receipt.logs, 'ContestStarted');
     if (args) {
       console.log(`Contest ${args.contestId} started!`);
       return args;
     }
-    throw new Error("ContestStarted event not found.");
+    throw new Error('ContestStarted event not found.');
   }
 
   async playCard(contestId: number, playerIndex: number, cardIndex: number) {
     const tx = await this.contract.playCard(contestId, playerIndex, cardIndex);
     const receipt = await tx.wait();
-    const args = this.parseEvent(receipt.logs, "RoundSubmitted");
+    const args = this.parseEvent(receipt.logs, 'RoundSubmitted');
     if (args) {
-      console.log(`Round submission by ${args.player} in contest ${args.contestId}`);
+      console.log(
+        `Round submission by ${args.player} in contest ${args.contestId}`,
+      );
       return args;
     }
-    throw new Error("RoundSubmitted event not found.");
+    throw new Error('RoundSubmitted event not found.');
   }
 
   async vote(contestId: number, voterIndex: number, suspectIndex: number) {
     const tx = await this.contract.vote(contestId, voterIndex, suspectIndex);
     const receipt = await tx.wait();
-    const args = this.parseEvent(receipt.logs, "RoundVoted");
+    const args = this.parseEvent(receipt.logs, 'RoundVoted');
     if (args) {
       console.log(`Vote by ${args.voter} in contest ${args.contestId}`);
       return args;
     }
-    throw new Error("RoundVoted event not found.");
+    throw new Error('RoundVoted event not found.');
   }
 
   // ========== Additional Getter Functions ==========
@@ -99,7 +101,7 @@ export class MusicGameContract {
       maxRounds: contest.maxRounds,
       currentRound: contest.currentRound,
       started: contest.started,
-      submitted: contest.submitted
+      submitted: contest.submitted,
     };
   }
 

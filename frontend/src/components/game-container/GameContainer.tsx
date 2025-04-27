@@ -6,7 +6,10 @@ interface GameContainer {
 
 const GameContainer: React.FC<GameContainer> = ({ children }) => {
   return (
-    <div className=" p-24 justify-center bg-[#141e2b] flex w-full h-screen">
+    <div
+      className="p-24 items-center
+ justify-center flex-col bg-[#141e2b] flex w-full h-screen"
+    >
       {children}
     </div>
   );
