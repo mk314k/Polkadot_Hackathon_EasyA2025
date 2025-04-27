@@ -1,14 +1,15 @@
-import ConnectWallet from './components/connect-wallet/ConnectWallet';
+import ConnectWallet from '../../components/connect-wallet/ConnectWallet';
 import { useEthereum } from '../../contexts/EthereumContext';
 
 import './home.css';
+import { Link } from 'react-router';
 
 interface HomeProps {
   children?: React.ReactNode;
 }
 
 export const Home: React.FC<HomeProps> = ({ children }) => {
-  const { __provider, account, connectWallet } = useEthereum();
+  const { account, connectWallet } = useEthereum();
   return (
     <main>
       <aside className="menu-bar">
@@ -16,9 +17,11 @@ export const Home: React.FC<HomeProps> = ({ children }) => {
           <ul>
             {account ? (
               <>
-                <li className="flex items-center justify-center text-white text-[29px] w-[185px] h-[60px] rounded-[8px] border-[2px] cursor-pointer mt-[24px] hover:bg-neutral-600 transition">
-                  New Game
-                </li>
+                <Link to="/game">
+                  <li className="flex items-center justify-center text-white text-[29px] w-[185px] h-[60px] rounded-[8px] border-[2px] cursor-pointer mt-[24px] hover:bg-neutral-600 transition">
+                    New Game
+                  </li>
+                </Link>
                 <li className="flex items-center justify-center text-white text-[29px] w-[185px] h-[60px] rounded-[8px] border-[2px] cursor-pointer mt-[24px] hover:bg-neutral-600 transition">
                   Join Game
                 </li>
@@ -30,7 +33,10 @@ export const Home: React.FC<HomeProps> = ({ children }) => {
                 </li>
               </>
             ) : (
-              <li className="flex items-center justify-center text-white text-[29px] min-w-[240px] h-[60px] rounded-[8px] border-[2px] cursor-pointer mt-[24px] hover:bg-neutral-600 transition">
+              <li
+                onClick={connectWallet}
+                className="flex items-center justify-center text-white text-[29px] min-w-[240px] h-[60px] rounded-[8px] border-[2px] cursor-pointer mt-[24px] hover:bg-neutral-600 transition"
+              >
                 Connect Wallet
               </li>
             )}

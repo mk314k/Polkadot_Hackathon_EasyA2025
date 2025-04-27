@@ -1,6 +1,7 @@
 import App from './App';
 import { basePath, routes } from './constants/routes';
-import Home from './features/home/Page';
+import Game from './pages/game/Page';
+import Home from './pages/home/Page';
 
 export const ROUTE_CONFIG = [
   {
@@ -11,6 +12,11 @@ export const ROUTE_CONFIG = [
   {
     path: routes.home.path,
     element: <Home />,
+    errorElement: <div>Error Page</div>,
+  },
+  {
+    path: routes.game.path,
+    element: <Game />,
     errorElement: <div>Error Page</div>,
   },
 ];
