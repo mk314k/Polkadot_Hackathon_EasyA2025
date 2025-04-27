@@ -92,8 +92,8 @@ _In this video, we show:_
 
 ## Contract Block Explorer Link
 
-🔗 [View Deployed Game Contract on Polkadot Asset Hub Block Explorer](https://polkadot-explorer-link-here.com/0xC03B5d3895F9a9b9a47993a73569F13cb443eeA8)
-🔗 [View Deployed NFT Contract on Polkadot Asset Hub Block Explorer](https://polkadot-explorer-link-here.com/0x0EdBFbB852751836BcEC638067D1A04C9B4F011d)
+🔗 [View Deployed Game Contract on Polkadot Asset Hub Block Explorer][0xC03B5d3895F9a9b9a47993a73569F13cb443eeA8]
+🔗 [View Deployed NFT Contract on Polkadot Asset Hub Block Explorer][0x0EdBFbB852751836BcEC638067D1A04C9B4F011d]
 
 ---
 
