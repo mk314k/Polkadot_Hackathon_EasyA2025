@@ -8,12 +8,16 @@
 }
 
 .create-contest {
-  /* background-size: 32%; */
   background-repeat: no-repeat;
-  background-color: #141e2b;
+  background-color: #111b26;
   background-position: bottom;
-  display: flex;
- justify-content: flex-end;
+  display: flex
+;
+  height: 100vh;
+  justify-content: center;
+  display: flex
+;
+  align-items: center;
 }
 
 

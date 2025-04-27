@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { AudioEditor } from '../../libs/AudioEditor';
 import { MusicGameContract } from '../../libs/contracts/musicGamePoints';
 import './createContest.css';
+import Space from '../../components/space/Space';
 interface CreateContestProps {
   contract: MusicGameContract;
 }
@@ -58,34 +59,39 @@ export default function CreateContest({ contract }: CreateContestProps) {
       <div className="create-contest flex flex-col items-center p-8 text-white create-contest">
         <h1 className="text-3xl mb-8">Create New Contest 🎶</h1>
 
-        {/* File Upload */}
-        <input
-          type="file"
-          accept="audio/*"
-          onChange={handleFileUpload}
-          className="mb-4"
-        />
-
+        <label className="flex flex-col items-center justify-center w-[200px] h-[60px] border-2 border-neutral-500 rounded-[8px] cursor-pointer text-neutral-300 hover:bg-neutral-700 transition">
+          Upload Audio
+          <input
+            type="file"
+            accept="audio/*"
+            onChange={handleFileUpload}
+            className="hidden"
+          />
+        </label>
+        <Space top={8} />
         {/* Preview Audio */}
         {audioUrl && (
           <audio controls src={audioUrl} className="mb-6 w-full max-w-lg" />
         )}
 
+        <Space top={8} />
         {/* Rounds and Players */}
         <div className="flex flex-col gap-4 mb-6">
+          <label className="text-neutral-300 text-sm">Max Rounds</label>
           <input
             type="number"
             placeholder="Max Rounds"
             value={maxRounds}
             onChange={(e) => setMaxRounds(Number(e.target.value))}
-            className="p-2 rounded bg-gray-200 text-black"
+            className="p-2 rounded bg-neutral-800 text-white placeholder-neutral-400 border border-neutral-600 focus:outline-none focus:ring-2 focus:ring-neutral-500 transition"
           />
+          <label className="text-neutral-300 text-sm">Max Players</label>
           <input
             type="number"
             placeholder="Max Players"
             value={maxPlayers}
             onChange={(e) => setMaxPlayers(Number(e.target.value))}
-            className="p-2 rounded bg-gray-200 text-black"
+            className="p-2 rounded bg-neutral-800 text-white placeholder-neutral-400 border border-neutral-600 focus:outline-none focus:ring-2 focus:ring-neutral-500 transition"
           />
         </div>
 
@@ -93,7 +99,11 @@ export default function CreateContest({ contract }: CreateContestProps) {
         <button
           onClick={handleCreateContest}
           disabled={loading}
-          className="bg-green-500 hover:bg-green-600 px-6 py-3 rounded text-white"
+          className={`cursor-pointer px-6 py-3 rounded text-white transition ${
+            loading
+              ? 'bg-neutral-600 cursor-not-allowed'
+              : 'bg-neutral-700 hover:bg-neutral-600'
+          }`}
         >
           {loading ? 'Creating...' : 'Create Contest'}
         </button>
